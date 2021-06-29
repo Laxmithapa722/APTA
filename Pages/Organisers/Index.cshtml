@@ -1,0 +1,60 @@
+﻿@page
+@model APTA.Pages.Organisers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Organisers</h1>
+
+<p>
+    <a asp-page="Create">Create a Organiser</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Organiser[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organiser[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organiser[0].Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organiser[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organiser[0].Sponsor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Organiser) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sponsor)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.OrganiserID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.OrganiserID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.OrganiserID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
